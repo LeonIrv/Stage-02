@@ -18,8 +18,7 @@ pipeline{
         stage('Auth'){
             steps{
                 withCredentials([file(credentialsId: 'GOOGLE_APPLICATION_CREDENTIALS', variable: 'FILE')]) {
-                    sh label: '', script: "gcloud auth activate-service-account ${SERVICE_ACCOUNT} --key-file $FILE --project epam-demo-325303";
-                    sh label: '', script: "gcloud container clusters get-credentials epam-cluster --zone=us-central1-b";                    
+                    sh label: '', script: "gcloud auth activate-service-account ${SERVICE_ACCOUNT} --key-file $FILE --project epam-demo-325303";                
                 }
             }
         stage('Terraform Initialize'){
