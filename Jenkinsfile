@@ -12,7 +12,7 @@ pipeline{
     stages{
         stage('Git Checkout'){
             steps{
-                git credentialsId: 'git-user', url: "${GITHUB_URL}"
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/LeonIrv/Stage-02'
             }
         }
         stage('Auth'){
