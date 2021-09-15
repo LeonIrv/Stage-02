@@ -21,7 +21,16 @@ pipeline{
                     sh label: '', script: "gcloud auth activate-service-account ${SERVICE_ACCOUNT} --key-file $FILE --project epam-demo-325303";
                     sh label: '', script: "gcloud container clusters get-credentials epam-cluster --zone=us-central1-b";                    
                 }
-                
+            }
+        stage('Terraform Initialize'){
+            steps{
+                sh label: '', script: "terraform init";
+            }
+        }
+        stage('Terraform Apply'){
+            steps{
+                sh label: '', script: "terraform apply --auto-approve" 
+                }
             }
         }
         stage('Secrets Deploy K8s'){
