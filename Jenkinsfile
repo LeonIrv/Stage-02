@@ -3,7 +3,7 @@ pipeline{
     environment {
         GOOGLE_APPLICATION_CREDENTIALS = credentials('GOOGLE_APPLICATION_CREDENTIALS')
         SERVICE_ACCOUNT = "epam-demo-sa@epam-demo-325303.iam.gserviceaccount.com"
-        GITHUB_URL = "https://github.com/LeonIrv/Stage-02.git"
+        GITHUB_URL = "https://github.com/LeonIrv/Stage-02"
     }
     tools {
         terraform 'terraform-latest'
