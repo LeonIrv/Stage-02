@@ -1,0 +1,36 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: mysql-backup
+spec:
+  schedule: "0 0 1 * *"
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 5
+  jobTemplate:
+    spec:
+      template: 
+        spec: 
+          containers:
+            - name: mysql-backup2
+              image: gcr.io/epam-demo-325303/mysql-backup2:latest
+              command: 
+                - sh 
+                - /root/backup-script.sh
+              env:
+              - name: DB_HOST
+                value: clouddb
+              - name: DB_USER
+                valueFrom:
+                  secretKeyRef:
+                      name: sql-info
+                      key: user
+              - name: DB_PASS
+                valueFrom:
+                  secretKeyRef:
+                    name: sql-info
+                    key: password
+              - name: DB_NAME
+                value: gcp_training
+              - name: GS_BUCKET
+                value: epam-demobk 
+          restartPolicy: Never
