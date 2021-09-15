@@ -19,3 +19,4 @@ Cloud Resource Manager API."# gcp-demo"
 #epam-demo
 "# epam-demo" 
 # Stage-02
+"# Stage-02" 
