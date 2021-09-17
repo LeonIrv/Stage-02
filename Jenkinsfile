@@ -41,7 +41,7 @@ pipeline{
                     sh label: '', script: "kubectl delete secret sql-instance --ignore-not-found"
                     sh label: '', script: "kubectl create secret generic sql-instance --from-literal=instanceName='$INSTANCE_NAME' --from-literal=connectionName=epam-demo-325303:us-central1:'$INSTANCE_NAME'"
                 }
-                withCredentials([file(credentialsId: 'gke-sa', variable: 'GKE_SA')]){
+                withCredentials([file(credentialsId: 'GOOGLE_APPLICATION_CREDENTIALS', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]){
                     sh '''
                         kubectl apply -f secret.yaml
                         kubectl delete secret sql-credentials --ignore-not-found
