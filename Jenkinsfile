@@ -16,17 +16,6 @@ pipeline{
                 sh label: '', script: "gcloud components install kubectl";
             }
         }
-        stage('Terraform Init'){
-            steps{
-                sh label: '', script: "terraform init";
-            }
-        }
-        stage('Terraform Apply'){
-            steps{
-                sh label: '', script: "terraform apply --auto-approve" 
-                git branch: 'master', credentialsId: 'github', url: 'https://github.com/LeonIrv/Stage-02'
-            }
-        }
         stage('Auth'){
             steps{
                 withCredentials([file(credentialsId: 'GOOGLE_APPLICATION_CREDENTIALS', variable: 'FILE')]) {
