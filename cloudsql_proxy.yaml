@@ -17,8 +17,8 @@ spec:
         - name: cloudsql-proxy
           image: gcr.io/cloudsql-docker/gce-proxy:latest
           command: ["/cloud_sql_proxy",
-                  "-instances=epam-demo-325303:us-central1:demo-5xcb=tcp:0.0.0.0:3306",
-                  "-credential_file=/secrets/cloudsql/credentials.json"] 
+                  "-instances=epam-demo-325303:us-central1:demo-4c4q=tcp:0.0.0.0:3306",
+                  "-credential_file=/home/leon_i_guerrero/credentials.json"] 
           env:
           - name: CONNECTION_NAME
             valueFrom:
