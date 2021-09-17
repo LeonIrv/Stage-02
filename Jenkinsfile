@@ -13,6 +13,7 @@ pipeline{
         stage('Git Checkout'){
             steps{
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/LeonIrv/Stage-02'
+                sh label: '', script: "gcloud components install kubectl";
             }
         }
         stage('Terraform Init'){
