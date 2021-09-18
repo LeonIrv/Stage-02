@@ -32,5 +32,5 @@ spec:
               - name: DB_NAME
                 value: gcp_training
               - name: GS_BUCKET
-                value: epam-demo-bucket 
+                value: epam-demo-bucket-2
           restartPolicy: Never
